@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'plot.apps.PlotConfig',
     'rest_framework',
+    'django_extensions'
     
 ]
 

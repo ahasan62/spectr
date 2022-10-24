@@ -1,6 +1,6 @@
 from django.urls import path,include
-from .views import NormalizedView
+from .views import getNormalized
 
 urlpatterns = [
-    path('normalized',NormalizedView.as_view()),
+    path('normalized',getNormalized),
 ]
