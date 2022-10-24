@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'plot.apps.PlotConfig',
-    'rest_framework'
+    'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
@@ -87,7 +88,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ['NAME'],
         'USER': os.environ['USER'],
-        'PASSWORD': os.environ['PASSWORD']
+        'PASSWORD': os.environ['PASSWORD'],
+        'HOST': 'localhost',
+        'PORT':'5432'
+
     }
 }
 
