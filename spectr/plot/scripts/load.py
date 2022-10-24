@@ -66,3 +66,64 @@ total_wavelength_size = len(wavelength)
 
 if total_emission_length == total_normalized_length == total_wavelength_size:
     print("valid data")
+    segmentedNormals = []
+    newnormal = []
+    count_n = 0
+    indexwithRepeats = 0
+    for n in normalized:
+        if ':' in n:
+            totalData = n.split(':')
+            datatorepeat = totalData[0]
+            numTimes = int(totalData[1])
+            concat_Repeat = [datatorepeat]
+            segmentedNormals.append(numTimes+1)
+            concat_Repeat = concat_Repeat*(numTimes+1)
+            newnormal.append(concat_Repeat)
+        else:
+            newnormal.append([n])
+            segmentedNormals.append(1)
+
+    #my new list 
+    normalized_float = []
+    for i in newnormal:
+        normalized_float += [float(x) for x in i]
+ 
+    print(normalized_float[188821])
+
+    segmentedEmission = []
+    newemission = []
+    count_e = 0
+    indexwithRepeats = 0
+    for e in emission:
+        if ':' in e:
+            totalData = e.split(':')
+            datatorepeat = totalData[0]
+            numTimes = int(totalData[1])
+            concat_Repeat = [datatorepeat]
+            segmentedEmission.append(numTimes+1)
+            concat_Repeat = concat_Repeat*(numTimes+1)
+            newemission.append(concat_Repeat)
+        else:
+            newemission.append([e])
+            segmentedEmission.append(1)
+
+    #my new list 
+    emission_float = []
+    for j in newemission:
+        emission_float += [float(x) for x in j]
+    print(emission_float[187204])
+
+
+
+    
+    # wv = wavelength[0]
+    # print(wv)
+    # ll = float(wv)
+    # print(ll)
+    wv_float = [float(x) for x in wavelength]
+
+    print(wv_float[0])
+
+
+
+
