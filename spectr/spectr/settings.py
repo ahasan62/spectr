@@ -34,7 +34,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:8000'
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,7 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'plot.apps.PlotConfig',
     'rest_framework',
-    'django_extensions'
+    'django_extensions',
+    'corsheaders'
     
 ]
 
@@ -58,6 +62,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+
 ]
 
 ROOT_URLCONF = 'spectr.urls'

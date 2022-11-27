@@ -5,38 +5,40 @@ import string
 # Create your models here.
 class Normalized(models.Model):
     molecule = models.CharField(max_length=50,default="")
-    isocode =  models.CharField(max_length=50,default="")
-    velocity =  models.CharField(max_length=50,default="")
-    thermal =  models.CharField(max_length=50,default="")
+    isocode =  models.IntegerField()
+    velocity =  models.FloatField()
+    thermal =  models.IntegerField()
     profile = models.CharField(max_length=50,default="",unique=True)
-    temperature =  models.CharField(max_length=8,default="")
-    log_columndensity =models.CharField(max_length=50,default="")
-    # normalized = md(models.FloatField(),default=list)
-    normalized = models.TextField()
+    temperature =  models.FloatField()
+    log_columndensity =models.FloatField()
+    normalized = ArrayField(models.FloatField(),default=list)
+    # normalized = models.JSONField(default=dict)
+
     # normalized = models.CharField()
     def __str__(self):
-        return self.name
+        return self.molecule
 
     # normalized = models.FloatField(default=1)
 
 class Emission(models.Model):
     molecule = models.CharField(max_length=50,default="")
-    isocode =  models.CharField(max_length=50,default="")
-    velocity =  models.CharField(max_length=50,default="")
-    thermal =  models.CharField(max_length=50,default="")
+    isocode =  models.IntegerField()
+    velocity =  models.FloatField()
+    thermal =  models.IntegerField()
     profile =  models.CharField(max_length=50,default="")
-    temperature =  models.CharField(max_length=50,default="")
-    log_columndensity =  models.CharField(max_length=50,default="")
-    emission = models.TextField()
+    temperature =  models.FloatField()
+    log_columndensity =models.FloatField()
+    emission = ArrayField(models.FloatField(),default=list)
+
     def __str__(self):
-        return self.name
+        return self.molecule
     
 
 class Wavelength(models.Model):
-    oversampling = models.CharField(max_length=50,default="")
-    resolution = models.CharField(max_length=50,default="")
-    wavelength = models.TextField()
+    oversampling = models.IntegerField()
+    resolution = models.FloatField()
+    wavelength = ArrayField(models.FloatField(),default=list)
     def __str__(self):
-        return self.name
+        return self.resolution
 
 

@@ -102,6 +102,9 @@ def run():
             normalized_float += [float(x) for x in i]
     
         # print(normalized_float[188821])
+        
+
+        normalized_str = ','.join(normalized_str)
 
         segmentedEmission = []
         newemission = []
@@ -131,13 +134,13 @@ def run():
 
 
 
-
+        emission_str = ','.join(emission_str)
         
         # wv = wavelength[0]
         # print(wv)
         # ll = float(wv)
         # print(ll)
-        wavelength_str = wavelength
+        wavelength_str = ','.join(wavelength)
         wv_float = [float(x) for x in wavelength]
 
         # print(wv_float[0])
@@ -154,14 +157,42 @@ def run():
         waveref =  y['spectrum']['@waveref']
         comment = y['spectrum']['comment']
         created = y['spectrum']['created']
-        print(emission_str[187204])
-        print(normalized_str[188821])
-        print(wavelength_str[0])
+        print(len(emission_float))
+        print(len(normalized_float))
+
+        # molecule_data = {'molecule': molecule, 'isocode':isocode,
+        # 'velocity':velocity,'thermal':thermal,
+        # 'profile':profile,'resolution':resolution,
+        # 'oversample':oversample,'temperature':temperature,
+        # 'log_columndensity':log_columndensity,
+        # 'waveref':waveref,'data':[]}
+        isocode = int(isocode)
+        velocity  = float(velocity)
+        thermal  = float(thermal)
+        resolution  = float(resolution)
+        oversample  = int(oversample)
+        temperature  = float(temperature)  
+        log_columndensity = float(isocode)
 
 
-        Normalized.objects.create(molecule=molecule,isocode=isocode,velocity=velocity,thermal=thermal,profile=profile,temperature=temperature,log_columndensity=log_columndensity,normalized=normalized_str)
-        Emission.objects.create(molecule=molecule,isocode=isocode,velocity=velocity,thermal=thermal,profile=profile,temperature=temperature,log_columndensity=log_columndensity,emission=emission_float)
-        Wavelength.objects.create(oversampling=oversample,resolution=resolution,wavelength=wv_float)
+        datadict = []
+        for i in range(0,len(emission_float)):
+            tempdict = {'normalized':normalized_float[i],'emission':emission_float[i]}
+            datadict.append(tempdict)
+            
+        print(len(datadict))
+        x = json.dumps({'data':datadict})
+
+        # print(emission_str)
+        # print(normalized_str)
+        # print(wavelength_str)
+        # if(Normalized.objects.filter(molecule=molecule).values('molecule')[0]['molecule'] == 'C2H2'):
+            
+        if(Normalized.objects.filter(molecule=molecule,isocode=isocode,velocity=velocity,thermal=thermal,profile=profile,temperature=temperature,log_columndensity=log_columndensity).exists() == False):
+            print("New Data")
+            Normalized.objects.create(molecule=molecule,isocode=isocode,velocity=velocity,thermal=thermal,profile=profile,temperature=temperature,log_columndensity=log_columndensity,normalized=normalized_float)
+            Emission.objects.create(molecule=molecule,isocode=isocode,velocity=velocity,thermal=thermal,profile=profile,temperature=temperature,log_columndensity=log_columndensity,emission=emission_float)
+            Wavelength.objects.create(oversampling=oversample,resolution=resolution,wavelength=wv_float)
 
 
 
@@ -170,3 +201,8 @@ def run():
 
 
 
+# hey show me the spectra that have features between x = 3 and x = 4, wavelength.
+#between this range.
+
+
+# 

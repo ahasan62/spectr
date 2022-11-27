@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    font-family: "Quicksand";
+    color: #333;
+  }
+
+
+.create input, .create textarea, .create select {
+    width: 30%;
+    padding: 6px 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display: block;
+  }
