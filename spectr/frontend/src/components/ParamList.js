@@ -3,6 +3,9 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useEffect, useState } from "react";
+import Paper from '@mui/material/Paper';
+import { Typography } from "@mui/material";
+import Grid from '@mui/material/Grid';
 
 const ParamList = ({onSearch, uniqueMolecule, uniqueIsocode, uniqueVelocity, uniqueTemp, uniqueLog}) => {
     const [values, setValues] = useState({});
@@ -79,7 +82,9 @@ const ParamList = ({onSearch, uniqueMolecule, uniqueIsocode, uniqueVelocity, uni
       }
     return (
         <div>
+ 
       <DropDown 
+      
       property={'Molecule'} 
       field={uniqueMolecule}
       onSelect={handleMoleculeSelect}

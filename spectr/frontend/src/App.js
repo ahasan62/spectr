@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useEffect, useState } from "react";
 import { Typography } from '@mui/material';
 import FileTable from './components/FileTable'
+import Pract from './components/Pract';
 
 function App() {
   const [files, setFiles] = useState([]);
@@ -77,7 +78,9 @@ function App() {
 
   return (
     <div>
-      <Typography>SpectraFactory</Typography>
+        {/* <Pract></Pract> */}
+      <Typography style={{  fontFamily: 'Inter' }}>SpectraFactory</Typography>
+
       <ParamList onSearch={searchFileByParam} uniqueMolecule={uniqueMolecule} uniqueIsocode={uniqueIsocode} uniqueVelocity={uniqueVelocity} uniqueTemp={uniqueTemp} uniqueLog={uniqueLog} />
       
       {/* <FileTable files={files} /> */}
